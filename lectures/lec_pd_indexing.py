@@ -366,15 +366,15 @@ print(x)
 
 # df.iloc[list of row pos] --> dataframe with rows in the list
 # Note: will raise IndexError if pos is out of bounds
-x  = '?'
-#print(x)
+x = df.iloc[[0, 1]] # --> DF with first two rows of df
+print(x)
 
 
 # However, Pandas will raise an exception if any of the indexes is out of
 # bounds:
-# x = df.iloc[[0, 10]] # --> raises IndexError
+x = df.iloc[[0, 10]] # --> raises IndexError
 
-# x = df.iloc[[0,100], :] # --> raises IndexError
+x = df.iloc[[0,100], :] # --> raises IndexError
 
 
 
@@ -382,12 +382,13 @@ x  = '?'
 # 2.2.3 Dataframe.iloc: Selection using slices
 
 # Slices work like ser.iloc
-x  = '?'
-#print(x)  
+x = df.iloc[0,[0,1]]
+print(x)
+
 
 # x--> empty DF
-x  = '?'
-#print(x)  
+x = df.iloc[0:1,:]
+print(x)
 
 
 
@@ -397,34 +398,34 @@ x = df.iloc[2:, :]
 print(x)
 
 # Set x to be a series with all columns of the first row
-x  = '?'
-#print(x)  
+x = df.iloc[0, 0:]
+print(x)
 
 # This will produce an empty series
-#x = df.iloc[0, 10:]  
-#print(x)  
+x = df.iloc[0, 10:]
+print(x)
 
 
 # Exercise 3
-# df = pd.DataFrame(
-#   {'col1': range(0, 20),
-#    'col2': range(20,40),
-#    'col3': range(40,60)
-#    }
-# )
-# print(df)
-#
-#
-# print(len(df))
-#
-# lst_even = []
-# for i in range(0,20):
-#   if i % 2 == 0:
-#     lst_even.append(i)
-#
-# # or using 'lst_even = list(range(0, len(df), 2)'
-# x = df.iloc[lst_even, [1]]
-# print(x)
+df = pd.DataFrame(
+  {'col1': range(0, 20),
+   'col2': range(20,40),
+   'col3': range(40,60)
+   }
+)
+print(df)
+
+
+print(len(df))
+
+lst_even = []
+for i in range(0,20):
+  if i % 2 == 0:
+    lst_even.append(i)
+
+# or using 'lst_even = list(range(0, len(df), 2)'
+x = df.iloc[lst_even, [1]]
+print(x)
 
 # ----------------------------------------------------------------------------
 #   3. Selection using [] 
@@ -471,13 +472,13 @@ print(x) # --> 7.02
 
 
 # Set `x` to be a series with the first two rows of `ser`
-x  = '?'
-#print(x)  
+x = ser[['2020-01-02', '2020-01-03']] # --> first two rows
+print(x)
 
 # All labels must exist. The following will raise a KeyError because a label
 # is not part of ser.index
 
-#x = ser[['2020-01-02', '3000-01-10']] 
+x = ser[['2020-01-02', '3000-01-10']]
 
 
 # Using label slices 
@@ -491,8 +492,10 @@ x  = '?'
 # elements between `start_label` and `end_label` (including endpoints)
 
 # Set `x` to include all obs between  '2020-01-13' and '2020-01-14'
-x  = '?'
-#print(x)  
+x = ser['2020-01-13':'2020-01-14']
+print(x)
+
+
 
 
 # (2) If either `start_label` or `end_label` not included in the index, the
@@ -573,18 +576,19 @@ x = ser[[0,3]]
 #print(x)  
 
 # This will return every other element, starting at position 0
-#x = ser[::2]  
-#print(x)  
-
+x = ser[::2]
+print(x)
+#
 # This returns the series in reverse order
-#x = ser[::-1]  
-#print(x)  
-
+x = ser[::-1]
+print(x)
 
 new_ser = pd.Series(data=['a','b', 'c'], index=[1, -4, 10])
+print(new_ser)
 # This will produce an empty series (because pandas thinks these are positions, not labels)
-x = new_ser[1:-4] 
+x = new_ser[1:-4]
 print(x)
+
 
 # 3.2 Dataframe
 # -------------

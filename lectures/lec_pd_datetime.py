@@ -229,16 +229,16 @@ print(result)
 #   Illustrating the advantages of a datetime indexes 
 # ----------------------------------------------------------------------------
 
-## Select all data for a given year in one go
-#print(prc.loc['2020'])
-#
-## Select all data for a given month
-#print(prc.loc['2020-01'])
-#
-## Selecting date ranges using strings
-#print(prc.loc['2020-01-01':'2020-01-05'])
-#
-#
+# Select all data for a given year in one go
+print(prc.loc['2020'])
+
+# Select all data for a given month
+print(prc.loc['2020-01'])
+
+# Selecting date ranges using strings
+print(prc.loc['2020-01-01':'2020-01-05'])
+
+
 
 #print(prc.loc[])
 
@@ -246,10 +246,10 @@ print(result)
 #   Computing returns 
 # ----------------------------------------------------------------------------
 # Make sure the dataframe is sorted
-#prc.sort_index(inplace=True)  
-
+prc.sort_index(inplace=True)
+#
 # compute returns
-#rets = prc.loc[:, 'Close'].pct_change()  
-#print(rets)  
+rets = prc.loc[:, 'Close'].pct_change()
+print(rets)
 
 

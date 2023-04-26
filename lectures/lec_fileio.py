@@ -52,7 +52,7 @@ for line in fobj:
     cnts_copy += line
 
 # Print the result
-#print(f"First 20 characters in cnts_copy: '{cnts_copy[:20]}'") 
+print(f"First 20 characters in cnts_copy: '{cnts_copy[:20]}'")
 
 # close the file
 #fobj.close() 
@@ -116,22 +116,22 @@ def print_lines(pth):
 
 #  This will create the file located at `DSTFILE` and write some content to it
 
-#with open(DSTFILE, mode='w') as fobj: 
-#    fobj.write('This is a line')
+with open(DSTFILE, mode='w') as fobj:
+   fobj.write('This is a line')
 #
 
 # Exiting the context manager will close the file
 # We can then print its contents
-#print_lines(DSTFILE) 
+print_lines(DSTFILE)
 
 
 # If you open the same file again in writing mode, the line we wrote above
 # will be erased:
 
-#with open(DSTFILE, mode='w') as fobj: 
-#    fobj.write('This is another line') 
-#
-#print_lines(DSTFILE) 
+with open(DSTFILE, mode='w') as fobj:
+   fobj.write('This is another line')
+
+print_lines(DSTFILE)
 #
 
 
@@ -140,10 +140,10 @@ def print_lines(pth):
 #   The write method does not add terminate the line.
 # ---------------------------------------------------------------------------- 
 
-#with open(DSTFILE, mode='w') as fobj:
-#    fobj.write('This is a line') 
-#    fobj.write('This is a another line') 
-#print_lines(DSTFILE) 
+with open(DSTFILE, mode='w') as fobj:
+   fobj.write('This is a line')
+   fobj.write('This is a another line')
+print_lines(DSTFILE)
 #
 
 # ---------------------------------------------------------------------------- 
@@ -151,11 +151,11 @@ def print_lines(pth):
 #   must add it yourself:
 # ---------------------------------------------------------------------------- 
 
-#with open(DSTFILE, mode='w') as fobj:
-#    fobj.write('This is a line\n') 
-#    fobj.write('This is a another line') 
-#print_lines(DSTFILE) 
-#
+with open(DSTFILE, mode='w') as fobj:
+   fobj.write('This is a line\n')
+   fobj.write('This is a another line')
+print_lines(DSTFILE)
+
 
 
 # ---------------------------------------------------------------------------- 
@@ -177,15 +177,15 @@ def print_lines_rstrip(pth):
             print(f"line {i}: '{line.rstrip()}'")
 
 #
-#with open(DSTFILE, mode='w') as fobj:
-#    fobj.write('This is a line\n') 
-#    fobj.write('This is a another line') 
-#print_lines_rstrip(DSTFILE) 
+with open(DSTFILE, mode='w') as fobj:
+   fobj.write('This is a line\n')
+   fobj.write('This is a another line')
+print_lines_rstrip(DSTFILE)
 #
 
 
 # ---------------------------------------------------------------------------- 
-#   Quiz: Create the save_open function here
+#   quiz: Create the save_open function here
 # ---------------------------------------------------------------------------- 
 def safe_open(pth, mode):
     """ Opens the file in `pth` using the mode in `mode` and returns 

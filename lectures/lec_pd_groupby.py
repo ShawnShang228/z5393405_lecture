@@ -47,7 +47,7 @@ data['date'] = pd.to_datetime(data['date'])
 # Create the dataframe and set the column 'date' as the index
 df = pd.DataFrame(data=data).set_index('date') 
 
-#print(df)
+print(df)
 #df.info()
 #
 
@@ -65,16 +65,16 @@ df = pd.DataFrame(data=data).set_index('date')
 # ---------------------------------------------------------------------------- 
 #   Creating groupby objects
 # ---------------------------------------------------------------------------- 
-groups  = '?'
+groups = df.groupby(by='firm')
 
-#print(groups)
+print(groups)
 #
 
 # Output:
 # <pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f8463863640>
 
 
-#print(groups.groups) 
+print(groups.groups)
 
 # Output:
 # {'Deutsche Bank': DatetimeIndex(['2020-09-23 08:58:55', '2020-09-23 09:01:26',
@@ -89,13 +89,13 @@ groups  = '?'
 #   The elements of groups.groups
 # ---------------------------------------------------------------------------- 
 
-#for firm, idx in groups.groups.items():
+# for firm, idx in groups.groups.items():
 #    print(f"Data for Firm == {firm}:")
 #    print("----------------------------------------")
 #    print(df.loc[idx])
 #    print("----------------------------------------")
 #    print("")
-#
+
 
 # Output:
 #   Data for Firm == Deutsche Bank:
@@ -134,17 +134,17 @@ groups  = '?'
 #   Applying functions to individual groups
 # ---------------------------------------------------------------------------- 
 
-#for firm, idx in groups.groups.items():
-#    nobs = len(df.loc[idx])
-#    print(f"Number of obs for Firm == {firm} is {nobs}")
+for firm, idx in groups.groups.items():
+   nobs = len(df.loc[idx])
+   print(f"Number of obs for Firm == {firm} is {nobs}")
 #
 
 # Using the apply method
-res  = '?'
+res  = groups.apply(len)
 
-#print(res)
-#print(type(res))
-#
+print(res)
+print(type(res))
+
 
 
 # ----------------------------------------------------------------------------
@@ -162,8 +162,8 @@ res  = '?'
 
 
 # using the apply method
-res  = '?'
-#print(res) 
+res  = groups.apply(pd.isna)
+print(res)
 
 # Output:
 # 
@@ -198,8 +198,8 @@ def get_last(df):
 #    print("")
 #
 
-res  = '?'
-#print(res) 
+res = groups.apply(get_last)
+print(res)
 
 
 # Some group by operations are so common that Pandas implements them directly

@@ -88,8 +88,8 @@ print([1] + [2, 3])       # --> [1, 2, 3]
 
 
 # Adding an integer to a series of floats
-new_ser  = '?'
-#print(new_ser) 
+new_ser  = ser + 1
+print(new_ser)
 
 # Output:
 #  2020-01-02    8.16
@@ -110,9 +110,9 @@ new_ser  = '?'
 #new_ser = ser + '1'  # --> Exception
 
 # We can add a string to a series containing strings
-s0  = '?'
-#s1 = s0 + '1' 
-#print(s1) 
+s0  = pd.Series(['1', '2', '3'])
+s1 = s0 + '1'
+print(s1)
 
 # Output:
 #  0    11
@@ -205,7 +205,7 @@ s2  = '?'
 #   Operations between dataframes
 # ----------------------------------------------------------------------------
 
-#print(df) 
+print(df)
 # Output:
 #              close  bday
 #  2020-01-02   7.16     1
@@ -221,15 +221,15 @@ s2  = '?'
 
 # This will be a dataframe with just one column 'bday'
 # (Note the column argument is a list of one element)
-df2  = '?'
-#print(df2) 
+df2 = df.iloc[1:3, [1]]
+print(df2)
 
 # Output:
 #              bday
 #  2020-01-03     2
 #  2020-01-06     3
-
-#print(df + df2) 
+# df_combine = df + df2
+print(df + df2)
 
 # Output:
 #              bday  close
@@ -243,6 +243,13 @@ df2  = '?'
 #  2020-01-13   NaN    NaN
 #  2020-01-14   NaN    NaN
 #  2020-01-15   NaN    NaN
+
+# ser_test = df_combine.loc[:, 'bday'].iloc[1]
+# print(ser_test)
+# print(type(ser_test))
+
+
+
 
 # ----------------------------------------------------------------------------
 #   Operations between dataframes and series
@@ -325,12 +332,12 @@ ones_by_cols  = '?'
 # | 2   | L2 |
 # | 3   | L3 |
 
-#left = pd.DataFrame(
-#        data=[('L1'), ('L2'), ('L3')],
-#        index=[1,2,3],
-#        columns=['L'],
-#        )
-#print(left)
+left = pd.DataFrame(
+       data=[('L1'), ('L2'), ('L3')],
+       index=[1,2,3],
+       columns=['L'],
+       )
+print(left)
 #
 
 
@@ -342,12 +349,12 @@ ones_by_cols  = '?'
 # | 4   | R4 |
 # | 5   | R5 |
 
-#right = pd.DataFrame(
-#        data=[('R3'), ('R4'), ('R5')],
-#        index=[3,4,5],
-#        columns=['R'],
-#        )
-#print(right)
+right = pd.DataFrame(
+       data=[('R3'), ('R4'), ('R5')],
+       index=[3,4,5],
+       columns=['R'],
+       )
+print(right)
 #
 
 #   Understanding the different types of joins:
